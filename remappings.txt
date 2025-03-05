@@ -1,0 +1,6 @@
+forge-std/=lib/forge-std/src/
+halmos-cheatcodes/=lib/halmos-cheatcodes/src/
+origin-dollar/=lib/origin-dollar/
+openzeppelin-contracts/=lib/openzeppelin-contracts/contracts/
+openzeppelin/=lib/origin-dollar/contracts/lib/openzeppelin/
+@openzeppelin=lib/openzeppelin-contracts/
