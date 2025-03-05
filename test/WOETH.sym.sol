@@ -35,5 +35,3 @@ contract WOETHInvariant is Test, SymTest {
         assertGe(woeth.userAssets(), 0, "userAssets should be positive");
     }
 }
-
-
