@@ -1,3 +1,6 @@
 [submodule "lib/forge-std"]
 	path = lib/forge-std
 	url = https://github.com/foundry-rs/forge-std
+[submodule "lib/origin-dollar"]
+	path = lib/origin-dollar
+	url = https://github.com/OriginProtocol/origin-dollar
