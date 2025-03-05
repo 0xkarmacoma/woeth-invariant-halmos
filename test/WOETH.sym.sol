@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8;
 
-import {ERC20} from "openzeppelin/contracts/token/ERC20/ERC20.sol";
+import {ERC20} from "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 
 import {Test} from "forge-std/Test.sol";
 import {SymTest} from "halmos-cheatcodes/SymTest.sol";
@@ -22,12 +22,16 @@ contract FuzzSetup is Test, SymTest {
         oeth.initialize(address(this), 1e26);
 
         // Deploy WOETH
-        woeth = new WOETH(oeth);
+        woeth = new WOETH(ERC20(address(oeth)));
         woeth.initialize();
 
         // Mint starting wOETH to dead address
         oeth.approve(address(woeth), DEAD_AMOUNT);
         oeth.mint(address(this), DEAD_AMOUNT);
         woeth.deposit(1e16, DEAD_ADDRESS);
+    }
+
+    function invariant_userAssetsPositive() public {
+        assertGe(woeth.userAssets(), 0, "userAssets should be positive");
     }
 }
