@@ -9,7 +9,7 @@ import {SymTest} from "halmos-cheatcodes/SymTest.sol";
 import {OETH} from "origin-dollar/contracts/contracts/token/OETH.sol";
 import {WOETH} from "origin-dollar/contracts/contracts/token/WOETH.sol";
 
-contract FuzzSetup is Test, SymTest {
+contract WOETHInvariant is Test, SymTest {
     uint256 internal constant DEAD_AMOUNT = 1e16;
     address internal constant DEAD_ADDRESS = address(0xDEAD);
 
@@ -31,7 +31,9 @@ contract FuzzSetup is Test, SymTest {
         woeth.deposit(1e16, DEAD_ADDRESS);
     }
 
-    function invariant_userAssetsPositive() public {
+    function invariant_userAssetsPositive() public view {
         assertGe(woeth.userAssets(), 0, "userAssets should be positive");
     }
 }
+
+
